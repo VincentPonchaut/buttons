@@ -5,23 +5,23 @@
     <meta charset="utf-8" />
     <meta name="description" content="&lt;model-viewer&gt; template" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link type="text/css" href="./styles.css?v=4" rel="stylesheet" />
+    <link type="text/css" href="./styles.css?v=5" rel="stylesheet" />
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script
-      src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js?v=4"
+      src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js?v=5"
       defer
     ></script>
 
     <!-- MDL -->
-    <link rel="stylesheet" href="./material.css?v=4">
-    <script src="./material.min.js?v=4"></script>
+    <link rel="stylesheet" href="./material.css?v=5">
+    <script src="./material.min.js?v=5"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <style>
       .bottom-right { position: fixed; bottom: 10px; right: 10px; }
       .bottom-left { position: fixed; bottom: 10px; left: 10px; }
-      .bottom-center { position: fixed; bottom: 10px; left: 50%; transform: translate(-50%, -2px); margin: 0 auto; }
+      .bottom-center { position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, -2px); margin: 0 auto; }
       .top-right { position: fixed; top: 10px; right: 10px; }
       .top-left { position: fixed; top: 10px; left: 10px; }
 
@@ -32,6 +32,13 @@
         display: grid; grid-template-rows: 1; grid-template-columns: 3;
         border-radius: 30px;
         /* box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); */
+      }
+
+      .center-row {
+        width: 172px; 
+        height: 50px; 
+        background-color: transparent; 
+        display: grid; grid-template-rows: 1; grid-template-columns: 3;
       }
       
       .boutonPasRond {
@@ -63,6 +70,24 @@
         height: 100%;
         background-color: #666;
       }
+
+      .smol {
+        height: 44px; 
+        width: 44px; 
+        min-width: 44px;
+      }
+
+      .normal {
+        height: 48px; 
+        width: 48px; 
+        min-width: 48px;
+      }
+
+      .big {
+        height: 56px; 
+        width: 56px; 
+        min-width: 56px;
+      }
     </style>
   </head>
   <body>
@@ -83,18 +108,18 @@
       src="scene.gltf">
     </model-viewer>
   <div id="vignetteEffect" class="vignette"></div>
-  <div style="width: 50px;" class="bottom-right">
-    <!-- TODO FULLSCREEN   -->
-    <button onmouseup="toggleFullScreen()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--white" style="display: block; "><i class="material-icons">add</i></button>
+  <!-- <button 
+    onmouseup="toggleFullScreen()" 
+    class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--white bottom-center" 
+    style="display: block; margin-left: 8px; height: 44px; width: 44px; min-width: 44px;"
+  >
+      <i class="material-icons">add</i>
+  </button> -->
+  <div class="center-row bottom-center">
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab " style="display: block; grid-row: 1; margin-left: 8px; width: 44px; min-width: 44px; height: 44px;"><i class="material-icons">add</i></button>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab " style="display: block; grid-row: 1; margin-left: 8px; width: 48px; min-width: 48px; height: 48px;"><i class="material-icons">add</i></button>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab " style="display: block; grid-row: 1; margin-left: 8px; width: 56px; min-width: 56px; height: 56px;"><i class="material-icons">add</i></button>
   </div>
-  <div id="theCapsule" class="bottom-center capsule">
-    <button id="hotspotBtn" onmouseup="resetCamera()" class="boutonPasRond" style="display: block; margin-top: 0px; margin-left: 0px; grid-row: 1;"><i class="material-icons">add</i></button>
-    <button onmouseup="changeCameraTarget()" class="boutonPasRond" style="display: block; margin-top: 0px; margin-left: 1px; grid-row: 1;"><i class="material-icons">add</i></button>
-  </div>
-  <!-- <button onmouseup="changeCameraTarget()" class="bottom-right mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--white"><i class="material-icons">add</i></button> -->
-  <button onmouseup="switchToTryOnMode()"  class="bottom-left mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--white"><i class="material-icons">add</i></button>
-  <button onmouseup="switchToViewerMode()" class="bottom-left mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--white" id="switchToViewerBtn" style="display: none;"><i class="material-icons">add</i></button>
-  <button onmouseup="changeAmbiance()" class="top-right mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--white"><i class="material-icons">add</i></button>
     
     <!-- ---------------------------------------------------------------------------------- -->
     <script>
@@ -119,7 +144,6 @@
       }
       
       modelViewer.addEventListener('load', (event) => {
-        switchToTryOnMode()
         console.log("loaded");
       });
 
@@ -443,11 +467,11 @@
       //   true
       // );
     </script>
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script
       type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js?v=4"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js?v=5"
     ></script>
   </body>
 </html>
