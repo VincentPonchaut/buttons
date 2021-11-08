@@ -88,6 +88,32 @@
         width: 56px; 
         min-width: 56px;
       }
+
+      .mbutton {
+        border-radius: 50%;
+        font-size: 24px;
+        height: 56px;
+        margin: auto;
+        min-width: 56px;
+        width: 56px;
+        padding: 0;
+        overflow: hidden;
+        border: none;
+        color: rgb(0,0,0);
+        position: relative;
+        display: inline-block;
+        background: rgba(255,255,255, 0.80);
+      }
+      .mbutton:active { background: rgba(0,0,0, 0.80);  color: white; }
+      .mbutton .material-icons {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-12px, -12px);
+                transform: translate(-12px, -12px);
+        line-height: 24px;
+        width: 24px; 
+      }
     </style>
   </head>
   <body>
@@ -116,9 +142,9 @@
       <i class="material-icons">add</i>
   </button> -->
   <div class="center-row bottom-center">
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab " style="display: block; grid-row: 1; margin-left: 8px; width: 44px; min-width: 44px; height: 44px;"><i class="material-icons">add</i></button>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab " style="display: block; grid-row: 1; margin-left: 8px; width: 48px; min-width: 48px; height: 48px;"><i class="material-icons">add</i></button>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab " style="display: block; grid-row: 1; margin-left: 8px; width: 56px; min-width: 56px; height: 56px;"><i class="material-icons">add</i></button>
+    <button class="mbutton" style="display: block; grid-row: 1; margin-left: 8px; width: 44px; min-width: 44px; height: 44px;"><i class="material-icons">add</i></button>
+    <button class="mbutton" style="display: block; grid-row: 1; margin-left: 8px; width: 48px; min-width: 48px; height: 48px;"><i class="material-icons">add</i></button>
+    <button class="mbutton" style="display: block; grid-row: 1; margin-left: 8px; width: 56px; min-width: 56px; height: 56px;"><i class="material-icons">add</i></button>
   </div>
     
     <!-- ---------------------------------------------------------------------------------- -->
